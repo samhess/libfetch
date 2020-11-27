@@ -1,0 +1,24 @@
+{
+  "name": "libfetch",
+  "version": "1.0.0",
+  "description": "HTTP client library for use in Browser and with Vue.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samhess/libfetch.git"
+  },
+  "keywords": [
+    "fetch",
+    "http",
+    "client"
+  ],
+  "author": "Samuel Hess",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samhess/libfetch/issues"
+  },
+  "homepage": "https://github.com/samhess/libfetch#readme"
+}
