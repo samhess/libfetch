@@ -1,0 +1,66 @@
+<html>
+<head>
+  <title>Test</title>
+  <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <h1>Test Page</h1>
+    <p>Results see console (F12)</p>
+    <p><button type="button" class="btn btn-primary" onclick="get()">GET</button></p>
+    <p><button type="button" class="btn btn-primary" onclick="post()">POST</button></p>
+    <p><button type="button" class="btn btn-primary" onclick="put()">PUT</button></p>
+    <p><button type="button" class="btn btn-primary" onclick="del()">DELETE</button></p>
+    <hr>
+    <p>
+      <button type="button" class="btn btn-primary" onclick="setToken()">Set Token</button>
+      <input id="token"/>
+    </p>
+  </div>
+</body>
+<script type="module">
+  import * as libfetch from './modules/libfetch.js'
+
+  window.get = function() {
+  libfetch.get('/api/foo/')
+    .then(data => {
+      console.log(data)
+    })
+    .catch(err => console.error(err.message))
+  }
+
+  window.post = function() {
+  let body = {foo:'bar'}
+  libfetch.post('/api/foo/create', body)
+    .then(data => {
+      console.log(data)
+    })
+    .catch(err => console.error(err.message))
+  }
+
+  window.put = function() {
+  let id = 1
+  let body = {foo:'bar'}
+  libfetch.put(`/api/foo/update/${id}`, body)
+    .then(data => {
+      console.log(data)
+    })
+    .catch(err => console.error(err.message))
+  }
+
+  window.del = function() {
+  let id = 1
+  libfetch.del(`/api/foo/delete/${id}`)
+    .then(data => {
+      console.log(data)
+    })
+    .catch(err => console.error(err.message))
+  }
+
+  window.setToken = function() {
+  let token = document.getElementById('token').value
+  libfetch.setToken(token)
+  }
+</script>
+</html>

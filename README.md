@@ -1,9 +1,18 @@
 # libfetch
-HTTP client library for use in Browser and with Vue.js
+HTTP client library for use in Browser and with Vue.js.
+
+This module sets HTTP Headers as follows:
+* Content-Type to *application/json*
+* Authorization to *Bearer ${token}*
+The JWT is taken from the localStorage Item *jwt*, or it can be set using *libfetch.setToken()*
+
+This module handles the response promise and returns the JSON body promise.
+
+## Installation
+```npm i libfetch```
 
 ## Usage
 ```js
-npm i libfetch
 import * as libfetch from 'libfetch'
 ```
 ### GET
@@ -39,7 +48,7 @@ import * as libfetch from 'libfetch'
  ### DELETE
 ```js
   let id = 1
-  libfetch.del(`/api/foo/delete/${id}`, body)
+  libfetch.del(`/api/foo/delete/${id}`)
     .then(data => {
       console.log(data)
     })
